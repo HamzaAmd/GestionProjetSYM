@@ -1,0 +1,49 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Tache index{% endblock %}
+
+{% block body %}
+    <h1>Liste Des Taches </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Description</th>
+                <th>Date Debut</th>
+                <th>Date Fin</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        
+        {% for tache in taches %}
+        {% if tache.idEmp == "5" %}
+
+
+            <tr>
+                <td>{{ tache.id }}</td>
+                <td>{{ tache.libelle }}</td>
+                <td>{{ tache.description }}</td>
+                <td>{{ tache.dateDebutTache ? tache.dateDebutTache|date('Y-m-d') : '' }}</td>
+                <td>{{ tache.dateFinTache ? tache.dateFinTache|date('Y-m-d') : '' }}</td>
+                <td>{{ tache.status }}</td>
+                <td>
+                    <a href="{{ path('app_tache_show_front', {'id': tache.id}) }}">show</a>
+                </td>
+            </tr>
+            {% endif %}
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+            
+        {% endfor %}
+        
+        </tbody>
+    </table>
+
+{% endblock %}

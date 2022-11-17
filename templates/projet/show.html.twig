@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projet{% endblock %}
+
+{% block body %}
+    <h1>Projet : {{ projet.codeProjet }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ projet.id }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ projet.codeProjet }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ projet.nomProjet }}</td>
+            </tr>
+            <tr>
+                <th>Date Debut</th>
+                <td>{{ projet.dateDebutProjet ? projet.dateDebutProjet|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date Fin</th>
+                <td>{{ projet.dateFinProjet ? projet.dateFinProjet|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_projet_index') }}">back to list</a>
+
+    <a href="{{ path('app_projet_edit', {'id': projet.id}) }}">edit</a>
+
+    {{ include('projet/_delete_form.html.twig') }}
+
+
+    <h1>Liste des taches </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Description</th>
+                <th>Date Debut</th>
+                <th>Date Fin</th>
+                <th>Status</th>
+                <th>Employe</th>
+                <th>Projet</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+        
+        {% for tache in taches %}
+        
+        
+            <tr>
+                <td>{{ tache.id }}</td>
+                <td>{{ tache.libelle }}</td>
+                <td>{{ tache.description }}</td>
+                <td>{{ tache.dateDebutTache ? tache.dateDebutTache|date('Y-m-d') : '' }}</td>
+                <td>{{ tache.dateFinTache ? tache.dateFinTache|date('Y-m-d') : '' }}</td>
+                <td>{{ tache.status }}</td>
+                <td>{{ tache.idEmp }}</td>
+                <td>{{ tache.idProjet }}</td>
+                
+            </tr>
+            
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        
+        
+        </tbody>
+
+        
+    </table>
+
+    
+{% endblock %}

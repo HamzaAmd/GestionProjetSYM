@@ -1,0 +1,47 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Tache{% endblock %}
+
+{% block body %}
+    <h1>Tache : {{ tache.libelle }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tache.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ tache.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ tache.description }}</td>
+            </tr>
+            <tr>
+                <th>Date Debut</th>
+                <td>{{ tache.dateDebutTache ? tache.dateDebutTache|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date Fin</th>
+                <td>{{ tache.dateFinTache ? tache.dateFinTache|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ tache.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+<table class="table">
+    <tbody>
+            <tr>
+                <th><a href="{{ path('app_front_index') }}">back to list</a></th>
+                <th><a href="">VALIDER</a></th>
+            </tr>
+    </tbody>
+</table>
+    
+
+{% endblock %}
